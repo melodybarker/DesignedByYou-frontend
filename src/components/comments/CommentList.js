@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { CommentContext } from "../comments/CommentProvider";
+import { CommentContext } from "./CommentProvider";
 import "./CommentBox.css";
 import moment from "moment";
 

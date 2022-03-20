@@ -1,8 +1,6 @@
 import React, { useEffect, useContext } from "react"
-import { EventContext } from "../event/EventProvider.js.js.js.js.js.js.js.js"
-import { HumanDate } from "../utils/HumanDate.js.js.js.js.js.js.js.js"
-import { ProfileContext } from "./AuthProvider.js.js.js.js.js.js.js"
-
+import { EventContext } from "../event/EventProvider.js"
+import { ProfileContext } from "./AuthProvider.js"
 
 export const Profile = (props) => {
     const { profile, getProfile } = useContext(ProfileContext)
