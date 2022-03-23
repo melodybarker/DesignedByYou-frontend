@@ -19,7 +19,7 @@ export const Login = () => {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                email: email.current.value,
+                username: email.current.value,
                 password: password.current.value
             })
         })
@@ -27,6 +27,7 @@ export const Login = () => {
             .then(res => {
                 if ("valid" in res && res.valid) {
                     localStorage.setItem("diyuser_id", res.token )
+                    localStorage.setItem("diyuser_pk", res.diyuser_pk)
                     history.push("/")
                 }
                 else {

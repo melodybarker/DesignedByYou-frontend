@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { CommentContext } from "../comments/CommentProvider";
+import { CommentContext } from "./CommentProvider";
 import "./CommentBox.css";
 import moment from "moment";
 
@@ -14,14 +14,14 @@ export const CommentList = () => {
     editComment,
     createNewComment,
   } = useContext(CommentContext);
-  const diyuser = parseInt(localStorage.getItem("diyuser_id"));
+  const diyuser = parseInt(localStorage.getItem("diyuser_pk"));
   const { commentId } = useParams();
   const { postId } = useParams();
   const updateComment = commentId ? true : false;
 
   const [comment, setComment] = useState({
     post: 0,
-    diyuser: parseInt(localStorage.getItem("diyuser_id")),
+    diyuser: parseInt(localStorage.getItem("diyuser_pk")),
     content: "",
     cdate: Date.now(),
   });
@@ -68,9 +68,8 @@ export const CommentList = () => {
 
   const handleDelete = (id) => () => {
     deleteComment(id).then(() => {
-      history.push(`/posts/${postId}`);
-    });
-    window.location.reload();
+      history.push(`/posts/${postId}`)
+    })
   };
 
   return (
@@ -90,13 +89,13 @@ export const CommentList = () => {
                 style={{ fontSize: "10px" }}
                 to={`/profile/$`}
               >
-                {c.diyuser?.user.first_name} {c.diyuser?.user.last_name}
+                {c.diyuser?.user?.first_name} {c.diyuser?.user?.last_name}
               </Link>
               <div className="comment_content" style={{ fontSize: "14px" }}>
                 {c.content}
               </div>
               <div className="comment_created_on" style={{ fontSize: "8px" }}>
-                {moment(c.created_on).format("MMMM DD YYYY, h:mm a")}
+                {c.date}
               </div>
               <button
                 onClick={handleDelete(c.id)}

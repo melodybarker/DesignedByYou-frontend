@@ -36,31 +36,9 @@ export const CategoryProvider = (props) => {
         .then(res => res.json())
     }
 
-    // const deleteCategory = (categoryID) => {
-    //     return fetch(`http://localhost:8000/categories/${categoryID}`, {
-    //         method: "DELETE",
-    //         headers: {
-    //             Authorization: `Token ${localStorage.getItem("diyuser_id")}`
-    //         }
-    //     })
-    //     .then(getCategories)
-    // }
-
-    // const editCategory = (category) => {
-    //     return fetch(`http://localhost:8000/categories/${category.id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
-    //         },
-    //         body: JSON.stringify(category)
-    //     })
-    //         .then(getCategories)
-    //     }
-
     return (
             <CategoryContext.Provider value={{
-            categories, getCategories, addCategory, getCategoryById }}>
+            categories, getCategories, getCategoryById }}>
             {props.children}
             </CategoryContext.Provider>
     )

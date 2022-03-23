@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react"
 import { Link, useHistory} from "react-router-dom"
 import "./Auth.css"
-import { RareUserContext } from "../rareusers/RareuserProvider"
+import { DiyUserContext } from "../diyusers/DiyUserProvider"
 
 export const Register = (props) => {
     const firstName = useRef()
@@ -10,7 +10,7 @@ export const Register = (props) => {
     const password = useRef()
     const verifyPassword = useRef()
     const passwordDialog = useRef()
-    const getCurrentUser = useContext(RareUserContext)
+    const getCurrentUser = useContext(DiyUserContext)
     const history = useHistory()
 
     const handleRegister = (e) => {
@@ -36,6 +36,7 @@ export const Register = (props) => {
                 .then(res => {
                     if ("valid" in res && res.valid) {
                         localStorage.setItem("diyuser_id", res.token)
+                        localStorage.setItem("diyuser_pk", res.diyuser_pk)
                         props.history.push("/")
                     }
                 })

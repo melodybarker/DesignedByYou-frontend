@@ -12,7 +12,7 @@ export const CommentBox = ({reloadComments}) => {
     const { postId } = useParams()
     const updateComment = commentId ? true : false
     const [isLoading, setIsLoading] = useState(true)
-    const diyuser = parseInt(localStorage.getItem("diyuser_id"))
+    const diyuser = parseInt(localStorage.getItem("diyuser_pk"))
 
     const [comment, setComment] = useState({
         post: 0,
@@ -54,7 +54,7 @@ export const CommentBox = ({reloadComments}) => {
         } else {
             const newComment = {
                 post: postId,
-                diyuser: diyuseruser,
+                diyuser: diyuser,
                 content: comment.content,
                 date: Date.now()
             }
