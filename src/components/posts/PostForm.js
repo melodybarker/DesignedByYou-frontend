@@ -25,6 +25,7 @@ export const PostForm = () => {
 			if(postId) {
 				getPostById(parseInt(postId))
 				.then(post => {
+                    post.category = post.category.id
 					setPost(post)
 				})
                 console.log(post)
@@ -33,27 +34,13 @@ export const PostForm = () => {
 	}, [])
 
   const handleInputChange = (e) => {
-  //   const newPost = Object.assign({}, post)
-  //   newPost[event.target.title] = event.target.value
-  //   setPost(newPost)
-  // }
-
-  // useEffect(() => {
-  //   if (editMode) {
-  //     getPostById(postId).then((res) => {
-  //       setPost(res)
-  //       console.warn('postId',postId)
-  //     })
-  //   }
-  //   getCategories().then(categoriesData => setCategories(categoriesData))
-  // }, [])
 
   const newPost = { ...post }
   newPost[e.target.id] = e.target.value;
 	setPost(newPost)
 	}
   const createNewPost = () => {
-    const category_id = parseInt(post.category.id)
+    const category_id = parseInt(post.category)
 
       if (editMode) {
         updatePost({
