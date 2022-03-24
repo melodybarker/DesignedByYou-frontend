@@ -12,7 +12,7 @@ export const DiyUserList = () => {
 
 
   useEffect(() => {
-    getCurrentUser();
+    getCurrentUser(userId);
   }, []);
 
   return (

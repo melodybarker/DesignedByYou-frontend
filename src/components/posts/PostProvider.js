@@ -32,7 +32,7 @@ export const PostProvider = (props) => {
       method: "PUT",
       header: {
         "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
+        Authorization: "Token e3743a59f0e6f037f57df7f75d67c63430ca18a8",
       },
       body: JSON.stringify(post),
     }).then(getPosts);

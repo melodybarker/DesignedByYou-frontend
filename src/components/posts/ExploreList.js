@@ -15,12 +15,11 @@ export const ExploreList = (props) => {
   }, []);
 
   const handleLike = (e) => {
-    const diypost = parseInt(likes.diypost)
-    const newLike = {
-        diypost: diypost,
+    const diyuserId = e.target.id
+    addLikes({
+        diypost: parseInt(diyuserId),
         liker: user_id
-    }
-    addLikes(newLike)
+    })
     .then(() => {
         history.push("/saved")
     })
@@ -53,14 +52,8 @@ export const ExploreList = (props) => {
             <Link to={`/posts/${p.id}`}>
               <img src={p.image_url} width="500px" height="350px" />
             </Link>
-
-            <button className="saveLike" style={{fontSize:"10px"}} onClick={(e) => {
-                e.preventDefault();
-                handleLike()
-            }} >
-                 {p.diyuser.id === user_id ? <div style={{color: 'red'}}>UnSave</div> : <div style={{color: 'blue'}}>Save</div>}</button>
-
-
+            <button id={p.id} onClick={handleLike}>
+                    {p.diyuser.id === user_id ? <div style={{color: 'blue'}}>Save</div> : <div style={{color: 'red'}}>Unsave</div>}</button>
           </section>
         );
       })}

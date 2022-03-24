@@ -18,7 +18,7 @@ export const NavBar = () => {
                 <img className="navbar__logo" src={Logo} alt='logo'/>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/profile">Profile</Link>
+                <Link className="navbar__link" to="/profile/me">Profile</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/explore">Explore</Link>

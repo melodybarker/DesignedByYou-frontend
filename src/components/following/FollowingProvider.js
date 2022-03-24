@@ -19,10 +19,9 @@ const addFollowing = followingObj => {
     return fetch("http://localhost:8000/following", {
 		method: "POST",
 		headers: {
-		  "Content-Type": "application/json",
-		  Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
+            Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
+		  "Content-Type": "application/json"
 		},
-		body: JSON.stringify(followingObj),
 	  }).then(getFollowing);
 	};
 

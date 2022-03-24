@@ -13,7 +13,8 @@ import { PostProvider } from "./posts/PostProvider"
 import { PostDetail } from "./posts/PostDetail"
 import { ExploreList } from "./posts/ExploreList"
 import { PostForm } from "./posts/PostForm"
-import { MyPosts } from "./posts/MyPosts"
+import { Profile } from "./auth/Profile"
+import { ProfileProvider } from "./auth/AuthProvider"
 
 export const ApplicationViews = () => {
     return <>
@@ -21,6 +22,7 @@ export const ApplicationViews = () => {
         margin: "5rem 2rem",
         lineHeight: "1.75rem"
     }}>
+    <ProfileProvider>
     <CategoryProvider>
     <CommentProvider>
     <PostProvider>
@@ -42,7 +44,7 @@ export const ApplicationViews = () => {
         <Route path="/posts/edit/:postId(\d+)">
             <PostForm />
         </Route>
-        <Route exact path="/profile">
+        <Route exact path="/profile/me">
             <DiyUserList />
         </Route>
         <Route exact path="/profiles/:userId(\d+)">
@@ -57,6 +59,7 @@ export const ApplicationViews = () => {
     </PostProvider>
     </CommentProvider>
     </CategoryProvider>
+    </ProfileProvider>
 
     </main>
     </>

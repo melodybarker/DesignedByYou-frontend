@@ -27,7 +27,7 @@ const addLikes = likesObj => {
 	};
 
 const releaseLikes = likesId => {
-    return fetch(`http://localhost:8000/Likes/${likesId}`, {
+    return fetch(`http://localhost:8000/likes/${likesId}`, {
         method: "DELETE",
       headers: {
         Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
@@ -36,7 +36,7 @@ const releaseLikes = likesId => {
         .then(getLikes)
 }
 const getLikesById = (likesId) => {
-    return fetch(`http://localhost:8000/Likes/${likesId}`, {
+    return fetch(`http://localhost:8000/likes/${likesId}`, {
 		headers: {
 			Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
 	},

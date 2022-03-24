@@ -24,12 +24,15 @@ export const PostDetail = () => {
     deleteComment(id).then(() => {
       history.push(`/posts/${postId}`);
     });
+    window.location.reload()
   };
 
   const handleRelease = (id) => () => {
     deletePost(id).then(() => {
-      window.location.reload();
+        history.push(`/profile/me`)
+
     });
+    window.location.reload();
   };
 
   return (
@@ -53,7 +56,7 @@ export const PostDetail = () => {
         Post by&nbsp;
         <Link className="post_user" to={`/profile/$`}>
           <i>
-            {post.diyuser?.user.first_name} {post.diyuser?.user.last_name}
+            {post.diyuser?.user?.first_name} {post.diyuser?.user?.last_name}
           </i>
         </Link>
         <div className="post_date" style={{ fontSize: "10px" }}>

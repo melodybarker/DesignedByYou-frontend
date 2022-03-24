@@ -1,9 +1,11 @@
+
+
 import React, {useState, useEffect} from "react";
 
 export const DiyUserContext = React.createContext();
 export const DiyUserProvider = (props) =>{
   const [currentUser, setCurrentUser] = useState({});
-  const [ diyuser, setdiyuser ] = useState([])
+  const [ user, setdiyuser ] = useState([])
 
   const getUsers = () => {
     return fetch("http://localhost:8000/diyusers", {
@@ -15,8 +17,8 @@ export const DiyUserProvider = (props) =>{
         .then(setCurrentUser)
 }
 
-  const getCurrentUser = () => {
-    return fetch("http://localhost:8000/diyusers/me", {
+  const getCurrentUser = (id) => {
+    return fetch(`http://localhost:8000/diyusers/${id}`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
       },
@@ -26,7 +28,7 @@ export const DiyUserProvider = (props) =>{
   };
 
   const getUserById = (userId) => {
-    return fetch(`http://localhost:8000/profile/${userId}`, {
+    return fetch(`http://localhost:8000/diyusers/${userId}`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("diyuser_id")}`,
       },
@@ -34,7 +36,7 @@ export const DiyUserProvider = (props) =>{
   };
 
   return (
-    <DiyUserContext.Provider value={{diyuser, getUsers, currentUser, setCurrentUser, getUserById, getCurrentUser,currentUser}}>
+    <DiyUserContext.Provider value={{user, getUsers, currentUser, setCurrentUser, getUserById, getCurrentUser}}>
       {props.children}
     </DiyUserContext.Provider>
   )

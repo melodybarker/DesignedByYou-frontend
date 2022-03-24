@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react"
-import { EventContext } from "../event/EventProvider.js"
+
 import { ProfileContext } from "./AuthProvider.js"
 
 export const Profile = (props) => {
@@ -28,20 +28,7 @@ export const Profile = (props) => {
                 <header className="posts__header">
                     <h3>Your Posts</h3>
                 </header>
-                <div className="posts">
-                    {
-                        profile.diyuser && profile.diyuser.posts.map(post => {
-                            return <section key={`post--${post.id}`} className="post">
-                                <div className="post__title">{post.title} by {post.diyuser.user.first_name} {post.diyuse.user.last_name</div>
-                                <div className="post__content">{post.content}</div>
-                                <div className="post__comment">comments {post.comment.content}</div>
-                                <button className="btn btn-4"
-                                    onClick={() => props.history.push(`/posts/${post.id}/edit`)}
-                                >Edit</button>
-                            </section>
-                        })
-                    }
-                </div>
+
             </section>
         </article>
     )
